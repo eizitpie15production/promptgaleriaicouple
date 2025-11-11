@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri Prompt AI Eizitpie Production</title>
+    <link rel="icon" type="image/png" href="https://static.wixstatic.com/media/a0b164_7672abbe760b42ea86445cbf7d63beec~mv2.png/v1/fill/w_617,h_588,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/a0b164_7672abbe760b42ea86445cbf7d63beec~mv2.png">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <h1>Galeri Prompt AI - Couple<br> ( Professional )</h1>
+		<br>
+        
+        <div class="header-controls">
+            <input type="search" id="search-bar" placeholder="Cari prompt...">
+            <button id="add-prompt-btn" title="Tambah Prompt Baru">➕</button>
+            <button id="dark-mode-toggle" title="Ganti Tema">🌙</button>
+            <a href="index.html" id="cover-btn" title="Kembali ke Cover">🏠</a>
+        </div>
+		
+		<div class="gallery-controls">
+            <div class="control-group">
+                <label for="sort-select">Urutkan:</label>
+                <select id="sort-select">
+                    <option value="newest">Terbaru</option>
+                    <option value="oldest">Terlama</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label>Tampilan:</label>
+                <button id="grid-view-btn" class="view-toggle-btn active" title="Tampilan Grid">■</button>
+                <button id="list-view-btn" class="view-toggle-btn" title="Tampilan Daftar">☰</button>
+            </div>
+        </div>
+		
+		<div class="quick-links">
+        <a href="https://gemini.google.com/app" target="_blank" rel="noopener noreferrer" class="btn-ai gemini">Akses Gemini AI disini</a><-->
+        <a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer" class="btn-ai chatgpt">Akses ChatGPT disini</a><-->
+        <a href="https://remaker.ai/id/face-swap-free/" target="_blank" rel="noopener noreferrer" class="btn-ai remaker">Akses Fitur Ubah Wajah</a><-->
+        <a href="https://imgupscaler.com/" target="_blank" rel="noopener noreferrer" class="btn-ai imgupscaler">Akses Fitur Tambah Resolusi Foto</a>
+		</div>
+        
+        
+    </header>
+
+    <div class="gallery-container"></div>
+    
+    <div id="pagination-controls"></div>
+
+    <div id="lightbox-modal" class="modal">
+        <span class="close-btn">&times;</span>
+        <img class="modal-content" id="modal-image">
+        <div class="modal-caption">
+            <p id="modal-prompt"></p>
+        </div>
+    </div>
+
+    <div id="add-modal" class="modal">
+        <div class="modal-content-form">
+            <span class="close-btn" id="close-add-modal">&times;</span>
+            <h2 id="modal-title">Tambah Prompt Baru</h2>
+            <form id="add-prompt-form">
+                <input type="hidden" id="edit-prompt-id"> 
+                
+                <div class="form-group">
+                    <label for="prompt-image">Upload Gambar:</label>
+                    <input type="file" id="prompt-image" accept="image/jpeg, image/png">
+                    <small class="form-helper-text">Pilih file .jpg atau .png. (Kosongkan jika tidak ingin mengubah gambar saat edit)</small>
+                </div>
+                <div class="form-group">
+                    <label for="prompt-text-input">Teks Prompt:</label>
+                    <textarea id="prompt-text-input" rows="6" placeholder="Masukkan teks prompt di sini..." required></textarea>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit" class="btn-save">Simpan</button>
+                    <button type="button" class="btn-cancel" id="cancel-add-btn">Batal</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="detail-modal" class="modal">
+        <div class="detail-modal-content">
+            <span class="close-btn" id="close-detail-modal">&times;</span>
+            <div class="detail-image">
+                <img id="detail-modal-image" src="" alt="Detail Gambar AI">
+            </div>
+            <div class="detail-text">
+                <h3>Detail Prompt</h3>
+                <p id="detail-modal-prompt"></p>
+                
+                <div class="detail-actions">
+                    <button id="detail-copy-btn" class="copy-btn">Salin Prompt</button>
+                    <button id="detail-gemini-btn" class="btn-ai gemini">Buka di Gemini</button>
+                    <button id="detail-chatgpt-btn" class="btn-ai chatgpt">Buka di ChatGPT</button>
+					
+					<a href="https://remaker.ai/id/face-swap-free/" target="_blank" rel="noopener noreferrer" class="btn-ai remaker">Fitur Ubah Wajah</a>
+					<a href="https://imgupscaler.com/" target="_blank" rel="noopener noreferrer" class="btn-ai imgupscaler">Fitur Tambah Resolusi Foto</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="confirm-modal" class="modal">
+        <div id="confirm-modal-content" class="modal-content-form">
+            <h2>Konfirmasi Hapus</h2>
+            <p id="confirm-message">Anda yakin ingin menghapus item ini?</p>
+            <div class="confirm-buttons">
+                <button id="confirm-no-btn" class="btn-cancel">Batal</button>
+                <button id="confirm-yes-btn" class="btn-delete">Ya, Hapus</button>
+            </div>
+        </div>
+    </div>
+	
+	<div class="gallery-controls">
+			<div class="control-group">
+                <label>Data:</label>
+                <button id="export-btn" class="data-btn">Export JSON</button>
+                <button id="import-btn" class="data-btn">Import JSON</button>
+                <input type="file" id="import-file-input" accept=".json" style="display: none;">
+            </div>
+			</div>
+	
+<footer>
+        <p class="tagline">Mengkurasi Visi Masa Depan.</p>
+        <p class="copyright">&copy; 2025 Galeri Prompt AI Dibuat oleh 
+            <a href="https://infomedsoseizitpie.carrd.co/" target="_blank" rel="noopener noreferrer">
+                <strong>Eizitpie Production</strong>
+            </a>.
+        </p>
+    </footer>
+
+    <script src="script.js" defer></script>
+
+</body>
+</html>

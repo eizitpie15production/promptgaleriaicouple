@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Datang di Galeri AI Eizitpie</title>
+    <link rel="icon" type="image/png" href="https://static.wixstatic.com/media/a0b164_7672abbe760b42ea86445cbf7d63beec~mv2.png/v1/fill/w_617,h_588,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/a0b164_7672abbe760b42ea86445cbf7d63beec~mv2.png">
+    
+    <style>
+        /* --- CSS untuk Halaman Cover --- */
+        
+        /* 1. Pengaturan Dasar */
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #000; 
+            color: #fff;
+            overflow: hidden; 
+        }
+
+        /* 2. Kontainer Slideshow (Latar Belakang) */
+        .slideshow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        /* 3. Setiap Slide Gambar */
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: contain; 
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            animation: imageFade 20s linear infinite;
+        }
+        
+        /* 4. Atur 5 Gambar Latar Belakang & Penundaan Animasi */
+        .slide:nth-child(1) {
+            background-image: url('images/1.jpg');
+        }
+        .slide:nth-child(2) {
+            background-image: url('images/2.jpg');
+            animation-delay: 4s;
+        }
+        .slide:nth-child(3) {
+            background-image: url('images/3.jpg');
+            animation-delay: 8s;
+        }
+        .slide:nth-child(4) {
+            background-image: url('images/4.jpg');
+            animation-delay: 12s;
+        }
+        .slide:nth-child(5) {
+            background-image: url('images/5.jpg');
+            animation-delay: 16s;
+        }
+
+        /* 5. Keyframes untuk Animasi Fade */
+        @keyframes imageFade {
+            0%   { opacity: 0; }
+            2.5% { opacity: 1; } 
+            17.5% { opacity: 1; }
+            20%  { opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        /* 6. Overlay Gelap */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); 
+            z-index: 2;
+        }
+
+        /* 7. Konten Teks & Tombol */
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+            text-align: center;
+            width: 90%;
+            animation: textFadeIn 1.5s ease-out;
+        }
+        
+        .content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin: 0;
+            color: #fff;
+            /* Efek Glow Statis */
+            text-shadow: 
+                0 0 4px #fff,
+                0 0 10px #007aff, 
+                0 0 20px #007aff;
+        }
+        
+        .content .tagline {
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin: 10px 0 40px 0;
+            opacity: 0.8;
+            letter-spacing: 1px;
+        }
+
+        /* 8. Tombol Masuk */
+        .enter-button {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            background-color: transparent;
+            border: 2px solid #fff;
+            border-radius: 50px;
+            padding: 12px 30px;
+            cursor: pointer;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .enter-button:hover {
+            background-color: #fff;
+            color: #000;
+            transform: scale(1.05);
+        }
+        
+        @keyframes textFadeIn {
+            from { opacity: 0; transform: translate(-50%, -40%); }
+            to { opacity: 1; transform: translate(-50%, -50%); }
+        }
+
+        /* Responsif untuk HP */
+        @media (max-width: 768px) {
+            .content h1 {
+                font-size: 2.5rem;
+            }
+            .content .tagline {
+                font-size: 1rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="slideshow">
+        <div class="slide"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
+    </div>
+
+    <div class="overlay"></div>
+
+    <div class="content">
+        <h1>Galeri Prompt AI - Couple</h1>
+        <p class="tagline">Created : Eizitpie Production</p>
+        
+        <a href="gallery.html" class="enter-button" id="enter-btn">Masuk Halaman Utama</a>
+    </div>
+
+
+    <script>
+        // Atur waktu (dalam milidetik) sebelum pindah otomatis
+        const WAKTU_TUNGGU = 20000; // 20 detik
+
+        // 1. Pindah otomatis setelah 20 detik
+        const autoRedirect = setTimeout(() => {
+            window.location.href = 'gallery.html';
+        }, WAKTU_TUNGGU);
+
+        // 2. Jika tombol diklik, batalkan pindah otomatis
+        document.getElementById('enter-btn').addEventListener('click', (e) => {
+            clearTimeout(autoRedirect);
+        });
+    </script>
+
+</body>
+</html>

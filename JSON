@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "image": "img/1.jpg",
+    "promptText": "A full-body realistic studio portrait of a male model standing confidently against a clean white background. He wears a black bomber jacket with blue-green and blue-purple accents, loose dark-gray cargo pants with multiple pockets, and white sneakers. The model carries a large black tote bag in one hand while slightly leaning forward with one leg stepping ahead, as if in mid-stride, creating a sense of motion and confidence. The camera is positioned at a low angle, making the subject appear tall and powerful, adding a dynamic and dramatic perspective. His facial expression is neutral yet composed. The lighting is soft and evenly distributed, typical of high-end fashion studio photography. Captured with a Sony Alpha A7R IV using a 50mm lens, f/4 aperture — ultra-detailed textures, sharp focus on the subject, smooth depth of field, minimalist aesthetic, editorial fashion vibe."
+  },
+  {
+    "id": 2,
+    "image": "img/2.jpg",
+    "promptText": "A high-quality studio portrait of a stylish young man sitting casually on the floor. He wears a black fleece jacket, beige loose pants, black sneakers, and futuristic sunglasses. The scene is lit with soft, diffused studio lighting, creating gentle shadows and a neutral background. The mood feels modern, confident, and fashion-forward, similar to an editorial photo for a streetwear brand. Ultra-realistic photography, 8K detail, shallow depth of field, Sony Alpha camera, cinematic tone."
+  },
+  {
+    "id": 3,
+    "image": "img/3.jpg",
+    "promptText": "A stylish young man with the same facial features and hairstyle as the attached photo is walking out of a trendy café entrance. He is wearing a loose black t-shirt with a small logo on the chest, loose black cargo pants, black and white sneakers, and a black watch on his left wrist while holding a dark-colored water bottle. The background features a glass door with signage and indoor plants above it, creating a trendy and casual street vibe. A full-body realistic portrait with natural lighting and youthful streetwear style."
+  }
+  {
+    "id": 4,
+    "image": "img/4.jpg",
+    "promptText": "A full-body realistic studio portrait of a man sitting confidently in a black director's chair. He wears a black biker leather jacket, a white tank top, black jeans, and cream canvas sneakers. Clean, plain gray studio background."
+  }
+  {
+    "id": 5,
+    "image": "img/5.jpg",
+    "promptText": "A high-quality, realistic outdoor portrait of a handsome Asian man in his late twenties, smiling cheerfully and looking directly at the viewer. He wears a black blazer over a light-colored t-shirt and has black, wavy hair. He is wearing white earbuds in his right ear and is gesturing with open hands as if presenting something. The background features modern city buildings, blurred slightly to keep focus on the subject. The lighting is bright and natural, captured with a Canon EOS R5, 85mm lens, f/1.4, ISO 100. The image has a professional, commercial aesthetic."
+  }
+]
