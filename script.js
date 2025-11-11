@@ -4,7 +4,7 @@ const defaultGalleryData = [
   {
     "id": 1,
     "image": "images/1.jpg",
-    "promptText": "Pertahankan wajah sesuaikan dengan gambar ini. sepasang pria muda berambut warna hitam, menggunakan hoodie coklat dengan logo nike kecil disisi kanan hoodie, dan menggunakan dengan celana jeans hitam, memakai jam tangan hitam kuning , menggunakan sepatu nike jordan retro 4 oreo putih hitam coklat. pria tersebut terlihat berdiri disamping kanan wanita tersebut sambil memegang bahu terlihat seperti merangkul wanita tersebut dengan ekspresi tersenyum tipis dan wanita muda berhijab coklat muda, mengenakan gaun panjang coklat dan sepatu sneakers putih, tersenyum dan melihat ke arah kamera. Dia duduk di meja hitam di sebuah kafe outdoor pada malam hari, dengan pemandangan kota yang penuh cahaya di latar belakang. Di mejanya ada minuman, piring berisi makanan penutup, ponsel, dan kunci. Suasana hangat dan modern."
+    "promptText": "Pertahankan wajah sesuaikan dengan gambar ini. sepasang pria muda berambut warna hitam, menggunakan hoodie coklat dengan logo nike kecil disisi kanan hoodie, dan menggunakan dengan celana jeans hitam, memakai jam tangan perpaduan warna hitam dan kuning tembaga dijamnya, menggunakan sepatu nike jordan retro 4 oreo putih hitam coklat. pria tersebut terlihat duduk disamping wanita tersebut dengan ekspresi tersenyum tipis dan wanita muda berhijab coklat muda, mengenakan gaun panjang coklat dan sepatu sneakers putih, tersenyum dan melihat ke arah kamera. dan duduk disamping pria tersebut di meja hitam di sebuah kafe outdoor pada malam hari, dengan pemandangan dibelakang mereka kota yang penuh cahaya di latar belakang. Di mejanya ada minuman, piring berisi makanan penutup, ponsel, dan kunci mobil. Suasana hangat dan modern."
   }
 ];
 
