@@ -1,4 +1,40 @@
 // --- 💾 DATABASE LOCALSTORAGE ---
+// --- 🎵 KONTROL MUSIK ---
+let intervalPenyimpanWaktu;
+function setupMusik() {
+    const musik = document.getElementById('musik-latar');
+    if (!musik) return; // Jika audio tidak ada, stop
+
+    // 1. Ambil & atur waktu musik dari halaman sebelumnya
+    const posisiTersimpan = localStorage.getItem('posisiMusik');
+    if (posisiTersimpan) {
+        musik.currentTime = parseFloat(posisiTersimpan);
+    }
+
+    // 2. Fungsi untuk memainkan musik
+    const mainkanMusik = () => {
+        musik.play().catch(e => console.error('Gagal mainkan musik:', e));
+        
+        // Hapus listener 'click' agar tidak menumpuk
+        document.body.removeEventListener('click', mainkanMusik);
+
+        // 3. Mulai SIMPAN posisi musik lagi di halaman ini
+        if (intervalPenyimpanWaktu) {
+            clearInterval(intervalPenyimpanWaktu);
+        }
+        intervalPenyimpanWaktu = setInterval(() => {
+            localStorage.setItem('posisiMusik', musik.currentTime);
+        }, 500); // Simpan setiap 0.5 detik
+    };
+
+    // 4. Coba mainkan. Jika gagal (karena browser blokir), 
+    //    tunggu user klik di mana saja untuk memainkannya.
+    musik.play().catch(e => {
+        console.log('Musik diblokir, menunggu interaksi pengguna...');
+        document.body.addEventListener('click', mainkanMusik, { once: true });
+    });
+}
+// --- AKHIR KONTROL MUSIK ---
 const STORAGE_KEY = 'myGalleryData';
 const defaultGalleryData = [
   {
@@ -260,6 +296,8 @@ function showNotification(message, type = 'success') {
 // --- 🚀 INISIALISASI HALAMAN ---
 document.addEventListener('DOMContentLoaded', () => {
 
+	setupMusik(); // <-- TAMBAHKAN TEPAT DI SINI
+	
     // Ambil data dari localStorage saat halaman dimuat
     galleryData = getGalleryData();
     // Ambil preferensi tampilan
@@ -594,3 +632,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+

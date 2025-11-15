@@ -175,21 +175,46 @@
         <a href="gallery.html" class="enter-button" id="enter-btn">Masuk Halaman Utama</a>
     </div>
 
+	<audio id="musik-latar" src="Keisya Levronka - Jadi Kekasihku Saja (Video Lirik).mp3" loop></audio>
 
     <script>
-        // Atur waktu (dalam milidetik) sebelum pindah otomatis
-        const WAKTU_TUNGGU = 20000; // 20 detik
+    const WAKTU_TUNGGU = 20000; // 20 detik
+    const musik = document.getElementById('musik-latar');
+    let intervalPenyimpanWaktu;
 
-        // 1. Pindah otomatis setelah 20 detik
-        const autoRedirect = setTimeout(() => {
-            window.location.href = 'gallery.html';
-        }, WAKTU_TUNGGU);
+    // Fungsi untuk memulai musik DAN menyimpan waktu
+    function mulaiMusikDanSimpan() {
+        musik.play().catch(e => console.log("Menunggu interaksi untuk musik..."));
+        
+        // Hapus interval lama jika ada
+        if (intervalPenyimpanWaktu) {
+            clearInterval(intervalPenyimpanWaktu);
+        }
+        
+        // Simpan waktu musik setiap 0.5 detik
+        intervalPenyimpanWaktu = setInterval(() => {
+            localStorage.setItem('posisiMusik', musik.currentTime);
+        }, 500);
+    }
 
-        // 2. Jika tombol diklik, batalkan pindah otomatis
-        document.getElementById('enter-btn').addEventListener('click', (e) => {
-            clearTimeout(autoRedirect);
-        });
-    </script>
+    // 1. Pindah otomatis setelah 20 detik
+    const autoRedirect = setTimeout(() => {
+        mulaiMusikDanSimpan(); // Coba mainkan & simpan sebelum pindah
+        window.location.href = 'gallery.html';
+    }, WAKTU_TUNGGU);
+
+    // 2. Jika tombol "Masuk" diklik
+    document.getElementById('enter-btn').addEventListener('click', (e) => {
+        clearTimeout(autoRedirect); // Batalkan pindah otomatis
+        mulaiMusikDanSimpan(); // Mainkan & simpan waktu
+        // Link a href akan otomatis pindah halaman
+    });
+    
+    // 3. Coba mainkan jika user klik di mana saja (untuk izin browser)
+    document.body.addEventListener('click', mulaiMusikDanSimpan, { once: true });
+</script>
+	
+	
 
 </body>
 </html>
